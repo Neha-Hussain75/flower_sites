@@ -35,7 +35,7 @@
 
     <div class="card">
       <h3>View Flowers</h3>
-      <p>Flowers list dekho</p>
+      <p>Flowers list with name, price, and description</p>
       <a href="view_flower.php" class="btn">Open</a>
     </div>
 

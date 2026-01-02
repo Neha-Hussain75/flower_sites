@@ -1,5 +1,12 @@
 <?php
 include "db.php";
+
+$query = "SELECT * FROM flowers";
+$result = mysqli_query($conn, $query);
+
+if (!$result) {
+    die("Query error");
+}
 ?>
 
 <!DOCTYPE html>
@@ -28,31 +35,27 @@ include "db.php";
 
   <table style="width:100%; margin-top:20px; border-collapse:collapse;">
     <tr style="background:#fde8e8;">
-      <th style="padding:10px;">Image</th>
+      <th>Image</th>
       <th>Name</th>
       <th>Price</th>
+      <th>Description</th>
       <th>Action</th>
     </tr>
 
-    <?php
-    $query = "SELECT * FROM flowers";
-    $result = mysqli_query($conn, $query);
-
-    while ($row = mysqli_fetch_assoc($result)) {
-    ?>
+    <?php while ($row = mysqli_fetch_assoc($result)) { ?>
       <tr style="text-align:center; border-bottom:1px solid #ddd;">
         <td style="padding:10px;">
           <img src="images/<?php echo $row['image']; ?>" width="80">
         </td>
-        <td><?php echo $row['name']; ?></td>
-        <td>Rs <?php echo $row['price']; ?></td>
+       <td><?php echo $row['flower_name']; ?></td>
+ <td>Rs <?php echo $row['price']; ?></td>
+        <td><?php echo $row['description']; ?></td>
         <td>
           <a href="edit_flower.php?id=<?php echo $row['id']; ?>">Edit</a> |
           <a href="delete_flower.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Delete this flower?')">Delete</a>
         </td>
       </tr>
     <?php } ?>
-
   </table>
 </div>
 
