@@ -4,60 +4,69 @@
   <meta charset="UTF-8">
   <title>BloomShop</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
   <style>
-    body { font-family: 'Poppins', sans-serif; }
-
-    /* FIXED HEADER */
+    /* Fixed Header */
     header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: #fff;
-      z-index: 999;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        z-index: 999;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
-
-    body { padding-top: 90px; }
+    body {
+        padding-top: 80px;
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+    }
+    .header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 30px;
+    }
+    .main-nav ul {
+        list-style: none;
+        display: flex;
+        gap: 25px;
+    }
+    .main-nav a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 600;
+    }
+    .main-nav a:hover {
+        color: #ff6b6b;
+    }
 
     .card, .product {
-      cursor: pointer;
-      transition: transform 0.2s;
+        cursor: pointer;
+        transition: transform 0.2s;
     }
     .card:hover, .product:hover {
-      transform: scale(1.05);
+        transform: scale(1.05);
     }
 
     .product-image, .card-image {
-      width: 100%;
-      height: 200px;
-      overflow: hidden;
-      border-radius: 6px;
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        border-radius: 6px;
     }
     .product-image img, .card-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    #categories {
-      text-align: center;
-      margin: 60px 0;
-    }
-
-    #contact {
-      padding: 60px 0;
-      background: #fff8f8;
-      text-align: center;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
     html { scroll-behavior: smooth; }
   </style>
 </head>
+
 <body>
 
 <header>
@@ -87,12 +96,12 @@
   </div>
 </section>
 
-<!-- FEATURED (STATIC) -->
+<!-- FEATURED -->
 <section class="featured">
   <div class="container">
     <h2>Featured Flowers</h2>
-
     <div class="grid product-grid">
+
       <div class="product">
         <div class="product-image">
           <img src="images/red rose.PNG">
@@ -105,9 +114,10 @@
         <div class="product-image">
           <img src="images/orchid.PNG">
         </div>
-        <h4>Orchid</h4>
+        <h4>Orchid Bouquet</h4>
         <p class="price">Rs 4800</p>
       </div>
+
     </div>
   </div>
 </section>
@@ -116,33 +126,34 @@
 <section id="categories">
   <div class="container">
     <h2>Shop by Category</h2>
-
     <div class="grid categories-grid">
+
       <div class="card">
         <div class="card-image">
           <img src="images/sun flower.PNG">
         </div>
         <h3>Sunflower</h3>
         <p>Birthday</p>
-        <p class="price">Rs 3000</p>
+        <p class="price">Rs 2500</p>
       </div>
 
       <div class="card">
         <div class="card-image">
           <img src="images/white daisy.PNG">
         </div>
-        <h3>Daisy</h3>
+        <h3>White Daisy</h3>
         <p>Wedding</p>
-        <p class="price">Rs 2800</p>
+        <p class="price">Rs 3000</p>
       </div>
+
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
-  <div class="container" style="max-width:600px;margin:auto;">
-    <h2>Contact Us</h2>
+<section id="contact" style="background:#fff8f8; padding:40px 0;">
+  <div class="container" style="max-width:600px;text-align:center;">
+    <h2 style="color:#ff6b6b;">Contact Us</h2>
     <p>Have questions? We'd love to hear from you.</p>
 
     <form>
