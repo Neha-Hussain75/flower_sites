@@ -5,70 +5,434 @@
   <title>BloomShop</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      background-color: #fff;
+      padding-top: 80px; /* For fixed header */
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
     /* Fixed Header */
     header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background: #fff;
-        z-index: 999;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    body {
-        padding-top: 80px;
-        margin: 0;
-        font-family: 'Poppins', sans-serif;
-    }
-    .header-inner {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 30px;
-    }
-    .main-nav ul {
-        list-style: none;
-        display: flex;
-        gap: 25px;
-    }
-    .main-nav a {
-        text-decoration: none;
-        color: #333;
-        font-weight: 600;
-    }
-    .main-nav a:hover {
-        color: #ff6b6b;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #fff;
+      z-index: 999;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
 
-    .card, .product {
-        cursor: pointer;
-        transition: transform 0.2s;
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
     }
-    .card:hover, .product:hover {
-        transform: scale(1.05);
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: #ff6b6b;
+    }
+
+    .main-nav ul {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .main-nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .main-nav ul li a:hover {
+      color: #ff6b6b;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 60px 0;
+      background: linear-gradient(135deg, #fde8e8 0%, #fff0f0 100%);
+    }
+
+    .hero-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    .hero-image {
+      flex: 1;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(255, 107, 107, 0.2);
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+    }
+
+    .tag {
+      display: inline-block;
+      background-color: #ff6b6b;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .hero-text h1 {
+      font-size: 48px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .accent {
+      color: #ff6b6b;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    /* Grid System */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    /* Featured & Category Cards */
+    .featured, #categories {
+      padding: 60px 0;
+    }
+
+    .featured h2, #categories h2 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .featured p, #categories p {
+      text-align: center;
+      color: #666;
+      margin-bottom: 40px;
+      font-size: 18px;
+    }
+
+    .product, .card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .product:hover, .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
     }
 
     .product-image, .card-image {
-        width: 100%;
-        height: 200px;
-        overflow: hidden;
-        border-radius: 6px;
-    }
-    .product-image img, .card-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+      height: 200px;
+      overflow: hidden;
     }
 
-    html { scroll-behavior: smooth; }
+    .product-image img, .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .product:hover img, .card:hover img {
+      transform: scale(1.05);
+    }
+
+    .product h4, .card h3 {
+      padding: 15px 15px 5px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .card p:not(.price) {
+      padding: 0 15px;
+      color: #666;
+      font-size: 14px;
+    }
+
+    .price {
+      padding: 5px 15px 15px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #ff6b6b;
+    }
+
+    /* Contact Section */
+    #contact {
+      padding: 60px 0;
+      background-color: #fff8f8;
+    }
+
+    #contact h2 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 15px;
+      color: #ff6b6b;
+    }
+
+    #contact > .container > p {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #555;
+      font-size: 18px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      transition: border 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #ff6b6b;
+    }
+
+    .submit-btn {
+      padding: 15px;
+      background: linear-gradient(45deg, #ff8c8c, #ff5c5c);
+      border: none;
+      color: white;
+      font-weight: 600;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .submit-btn:hover {
+      background: linear-gradient(45deg, #ff5c5c, #ff3b3b);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 92, 92, 0.3);
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.7);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: white;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      animation: modalFade 0.3s;
+    }
+
+    @keyframes modalFade {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(255,255,255,0.8);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s;
+    }
+
+    .modal-close:hover {
+      background: #ff6b6b;
+      color: white;
+    }
+
+    .modal-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .modal-info {
+      padding: 20px;
+    }
+
+    .modal-info h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .modal-category {
+      display: inline-block;
+      background-color: #f0f0f0;
+      color: #666;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .modal-price {
+      font-size: 28px;
+      font-weight: 700;
+      color: #ff6b6b;
+      margin-bottom: 15px;
+    }
+
+    .modal-description {
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 60px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .hero-inner {
+        flex-direction: column;
+      }
+      
+      .hero-text h1 {
+        font-size: 36px;
+      }
+      
+      .grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-inner {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      body {
+        padding-top: 120px;
+      }
+      
+      .hero-text h1 {
+        font-size: 30px;
+      }
+      
+      .grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .main-nav ul {
+        gap: 15px;
+      }
+      
+      .hero-text h1 {
+        font-size: 26px;
+      }
+      
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
-
 <body>
 
+<!-- Header -->
 <header>
   <div class="header-inner">
     <div class="logo">🌸 BloomShop</div>
@@ -82,92 +446,276 @@
   </div>
 </header>
 
-<!-- HERO -->
+<!-- Hero Section -->
 <section class="hero">
   <div class="container hero-inner">
     <div class="hero-text">
       <span class="tag">Fresh Flowers</span>
       <h1>Beautiful Flowers for <span class="accent">Every Occasion</span></h1>
-      <p>Fresh and lovely flowers for gifting and decoration.</p>
+      <p>Fresh and lovely flowers for gifting and decoration. We deliver the freshest blooms right to your doorstep.</p>
     </div>
     <div class="hero-image">
-      <img src="images/main.jpg" alt="Flowers">
+      <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Beautiful Flower Bouquet">
     </div>
   </div>
 </section>
 
-<!-- FEATURED -->
+<!-- Featured Flowers -->
 <section class="featured">
   <div class="container">
     <h2>Featured Flowers</h2>
-    <div class="grid product-grid">
-
-      <div class="product">
-        <div class="product-image">
-          <img src="images/red rose.PNG">
-        </div>
-        <h4>Red Roses</h4>
-        <p class="price">Rs 5000</p>
-      </div>
-
-      <div class="product">
-        <div class="product-image">
-          <img src="images/orchid.PNG">
-        </div>
-        <h4>Orchid Bouquet</h4>
-        <p class="price">Rs 4800</p>
-      </div>
-
+    <p>Our most popular and beautiful flower arrangements</p>
+    <div class="grid" id="featuredGrid">
+      <!-- Featured flowers will be inserted here by JavaScript -->
     </div>
   </div>
 </section>
 
-<!-- CATEGORIES -->
+<!-- Categories -->
 <section id="categories">
   <div class="container">
     <h2>Shop by Category</h2>
-    <div class="grid categories-grid">
-
-      <div class="card">
-        <div class="card-image">
-          <img src="images/sun flower.PNG">
-        </div>
-        <h3>Sunflower</h3>
-        <p>Birthday</p>
-        <p class="price">Rs 2500</p>
-      </div>
-
-      <div class="card">
-        <div class="card-image">
-          <img src="images/white daisy.PNG">
-        </div>
-        <h3>White Daisy</h3>
-        <p>Wedding</p>
-        <p class="price">Rs 3000</p>
-      </div>
-
+    <p>Find the perfect flowers for any occasion</p>
+    <div class="grid" id="categoriesGrid">
+      <!-- Categories will be inserted here by JavaScript -->
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" style="background:#fff8f8; padding:40px 0;">
-  <div class="container" style="max-width:600px;text-align:center;">
-    <h2 style="color:#ff6b6b;">Contact Us</h2>
-    <p>Have questions? We'd love to hear from you.</p>
-
-    <form>
-      <input type="text" placeholder="Your Name" required><br><br>
-      <input type="email" placeholder="Your Email" required><br><br>
-      <textarea rows="5" placeholder="Your Message"></textarea><br><br>
-      <button type="submit">Send Message</button>
+<!-- Contact Section -->
+<section id="contact">
+  <div class="container">
+    <h2>Contact Us</h2>
+    <p>Have questions or want to place a custom order? Fill out the form below and we'll get back to you!</p>
+    
+    <form class="contact-form" id="contactForm">
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+      </div>
+      
+      <button type="submit" class="submit-btn">Send Message</button>
     </form>
   </div>
 </section>
 
-<footer class="site-footer">
-  <p>© 2025 BloomShop. All Rights Reserved.</p>
+<!-- Flower Detail Modal -->
+<div id="flowerModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-close" id="modalClose">&times;</div>
+    <img id="modalImage" class="modal-image" src="" alt="Flower Image">
+    <div class="modal-info">
+      <h3 id="modalName"></h3>
+      <span id="modalCategory" class="modal-category"></span>
+      <p id="modalPrice" class="modal-price"></p>
+      <p id="modalDescription" class="modal-description"></p>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p>© 2025 BloomShop. All Rights Reserved.</p>
+    <p style="margin-top: 10px; font-size: 14px; opacity: 0.8;">Made with ❤️ for flower lovers everywhere</p>
+  </div>
 </footer>
+
+<script>
+// Flower Data (replaces PHP database)
+const flowerData = {
+  featured: [
+    {
+      id: 1,
+      name: "Red Rose Bouquet",
+      category: "Roses",
+      price: "Rs 4,800",
+      image: "https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&q=80",
+      description: "A beautiful bouquet of fresh red roses, perfect for romantic occasions and anniversaries."
+    },
+    {
+      id: 2,
+      name: "Orchid Arrangement",
+      category: "Orchids",
+      price: "Rs 5,200",
+      image: "https://images.unsplash.com/photo-1517232115160-ff933647183?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      description: "Elegant orchid arrangement suitable for home or office decoration."
+    },
+    {
+      id: 3,
+      name: "Lily Bouquet",
+      category: "Lilies",
+      price: "Rs 4,900",
+      image: "https://images.unsplash.com/photo-1563176405-28a2f9eed2c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      description: "Fresh white lilies symbolizing purity and refined beauty."
+    },
+    {
+      id: 4,
+      name: "Sunflower Bundle",
+      category: "Sunflowers",
+      price: "Rs 4,500",
+      image: "https://images.unsplash.com/photo-1597848212624-e6f1f5d6f7d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      description: "Bright sunflowers that bring happiness and sunshine to any space."
+    }
+  ],
+  categories: [
+    {
+      id: 5,
+      name: "Tulip Bouquet",
+      category: "Tulips",
+      price: "Rs 3,200",
+      image: "https://images.unsplash.com/photo-1520769669658-f07657f5a307?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      description: "Colorful tulips representing perfect love and cheerful thoughts."
+    },
+    {
+      id: 6,
+      name: "Carnation Mix",
+      category: "Carnations",
+      price: "Rs 2,800",
+      image: "https://images.unsplash.com/photo-1560703650-ef3e0f254ae0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      description: "Beautiful carnations in various colors for any occasion."
+    },
+    {
+      id: 7,
+      name: "Daisy Collection",
+      category: "Daisies",
+      price: "Rs 2,500",
+      image: "https://images.unsplash.com/photo-1558904541-efa843a96d01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      description: "Simple yet elegant daisies representing innocence and purity."
+    },
+    {
+      id: 8,
+      name: "Mixed Flower Basket",
+      category: "Mixed",
+      price: "Rs 3,800",
+      image: "https://images.unsplash.com/photo-1470509037663-253afd7f0f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      description: "A beautiful mix of seasonal flowers arranged in a decorative basket."
+    },
+    {
+      id: 9,
+      name: "Baby's Breath Bundle",
+      category: "Filler Flowers",
+      price: "Rs 1,800",
+      image: "https://images.unsplash.com/photo-1572454591674-2739f30d8c7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      description: "Delicate baby's breath flowers perfect for complementing any bouquet."
+    },
+    {
+      id: 10,
+      name: "Peony Arrangement",
+      category: "Peonies",
+      price: "Rs 4,200",
+      image: "https://images.unsplash.com/photo-1527061011665-3652c757a4d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      description: "Luxurious peonies symbolizing prosperity and good fortune."
+    }
+  ]
+};
+
+// Render Featured Flowers
+function renderFeaturedFlowers() {
+  const featuredGrid = document.getElementById('featuredGrid');
+  
+  flowerData.featured.forEach(flower => {
+    const productCard = document.createElement('div');
+    productCard.className = 'product';
+    productCard.onclick = () => openModal(flower);
+    
+    productCard.innerHTML = `
+      <div class="product-image">
+        <img src="${flower.image}" alt="${flower.name}">
+      </div>
+      <h4>${flower.name}</h4>
+      <p class="price">${flower.price}</p>
+    `;
+    
+    featuredGrid.appendChild(productCard);
+  });
+}
+
+// Render Categories
+function renderCategories() {
+  const categoriesGrid = document.getElementById('categoriesGrid');
+  
+  flowerData.categories.forEach(flower => {
+    const categoryCard = document.createElement('div');
+    categoryCard.className = 'card';
+    categoryCard.onclick = () => openModal(flower);
+    
+    categoryCard.innerHTML = `
+      <div class="card-image">
+        <img src="${flower.image}" alt="${flower.name}">
+      </div>
+      <h3>${flower.name}</h3>
+      <p>${flower.category}</p>
+      <p class="price">${flower.price}</p>
+    `;
+    
+    categoriesGrid.appendChild(categoryCard);
+  });
+}
+
+// Modal Functions
+function openModal(flower) {
+  document.getElementById('modalImage').src = flower.image;
+  document.getElementById('modalName').textContent = flower.name;
+  document.getElementById('modalCategory').textContent = flower.category;
+  document.getElementById('modalPrice').textContent = flower.price;
+  document.getElementById('modalDescription').textContent = flower.description;
+  document.getElementById('flowerModal').style.display = 'flex';
+}
+
+function closeModal() {
+  document.getElementById('flowerModal').style.display = 'none';
+}
+
+// Contact Form Submission
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
+  
+  // In a real application, you would send this data to a server
+  // For GitHub Pages demo, we'll just show an alert
+  alert(`Thank you ${name}! Your message has been received. We'll contact you at ${email} soon.`);
+  
+  // Reset the form
+  document.getElementById('contactForm').reset();
+});
+
+// Initialize the page
+document.addEventListener('DOMContentLoaded', function() {
+  renderFeaturedFlowers();
+  renderCategories();
+  
+  // Close modal when clicking the X
+  document.getElementById('modalClose').onclick = closeModal;
+  
+  // Close modal when clicking outside
+  document.getElementById('flowerModal').onclick = function(e) {
+    if (e.target === this) {
+      closeModal();
+    }
+  };
+  
+  // Close modal with Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeModal();
+    }
+  });
+});
+</script>
 
 </body>
 </html>
