@@ -190,7 +190,25 @@ header {
   margin-top: 40px;
   color: #666;
   font-size: 14px;
+}/* Center the Shop by Category heading and add spacing from above */
+#categories {
+    text-align: center; /* ensure all child text is centered */
+    margin-top: 40px;   /* space from above section */
 }
+
+#categories h2 {
+    text-align: center;       /* center heading */
+    margin-top: 20px;         /* space above heading */
+    margin-bottom: 10px;      /* space below heading */
+    font-size: 28px;          /* optional: heading size */
+}
+
+#categories p {
+    text-align: center;       /* center paragraph */
+    margin-bottom: 30px;      /* space below paragraph */
+    color: #555;              /* optional: paragraph color */
+}
+
 
 /* RESPONSIVE */
 
