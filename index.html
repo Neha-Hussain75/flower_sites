@@ -452,7 +452,7 @@
     <div class="hero-text">
       <span class="tag">Fresh Flowers</span>
       <h1>Beautiful Flowers for <span class="accent">Every Occasion</span></h1>
-      <p>Fresh and lovely flowers for gifting and decoration. We deliver the freshest blooms right to your doorstep.</p>
+      <p>Fresh and lovely flowers for gifting and decoration. We deliver <br>the freshest blooms right to your doorstep.</p>
     </div>
     <div class="hero-image">
       <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Beautiful Flower Bouquet">
@@ -548,15 +548,15 @@ const flowerData = {
       name: "Orchid Arrangement",
       category: "Orchids",
       price: "Rs 5,200",
-      image: "https://images.unsplash.com/photo-1517232115160-ff933647183?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-      description: "Elegant orchid arrangement suitable for home or office decoration."
+    image: "/images/orchid.PNG",
+  description: "Elegant orchid arrangement suitable for home or office decoration."
     },
     {
       id: 3,
       name: "Lily Bouquet",
       category: "Lilies",
       price: "Rs 4,900",
-      image: "https://images.unsplash.com/photo-1563176405-28a2f9eed2c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      image: "/images/lilies.jpg",
       description: "Fresh white lilies symbolizing purity and refined beauty."
     },
     {
@@ -564,59 +564,46 @@ const flowerData = {
       name: "Sunflower Bundle",
       category: "Sunflowers",
       price: "Rs 4,500",
-      image: "https://images.unsplash.com/photo-1597848212624-e6f1f5d6f7d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      image: "/images/sun flower.PNG",
       description: "Bright sunflowers that bring happiness and sunshine to any space."
-    }
+    },
   ],
   categories: [
+    
     {
       id: 5,
       name: "Tulip Bouquet",
       category: "Tulips",
       price: "Rs 3,200",
-      image: "https://images.unsplash.com/photo-1520769669658-f07657f5a307?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      image: "/images/tulip.jpeg",
       description: "Colorful tulips representing perfect love and cheerful thoughts."
     },
     {
       id: 6,
-      name: "Carnation Mix",
-      category: "Carnations",
+      name: "Daisy Collection",
+      category: "Daisies",
       price: "Rs 2,800",
-      image: "https://images.unsplash.com/photo-1560703650-ef3e0f254ae0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-      description: "Beautiful carnations in various colors for any occasion."
+      image: "/images/white daisy.PNG",
+      description: "Beautiful Daisies."
     },
     {
       id: 7,
-      name: "Daisy Collection",
-      category: "Daisies",
-      price: "Rs 2,500",
-      image: "https://images.unsplash.com/photo-1558904541-efa843a96d01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-      description: "Simple yet elegant daisies representing innocence and purity."
-    },
-    {
-      id: 8,
       name: "Mixed Flower Basket",
       category: "Mixed",
-      price: "Rs 3,800",
-      image: "https://images.unsplash.com/photo-1470509037663-253afd7f0f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+      price: "Rs 2,500",
+      image: "/images/mixed.PNG",
       description: "A beautiful mix of seasonal flowers arranged in a decorative basket."
     },
+    
     {
-      id: 9,
-      name: "Baby's Breath Bundle",
-      category: "Filler Flowers",
-      price: "Rs 1,800",
-      image: "https://images.unsplash.com/photo-1572454591674-2739f30d8c7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-      description: "Delicate baby's breath flowers perfect for complementing any bouquet."
-    },
-    {
-      id: 10,
+      id: 8,
       name: "Peony Arrangement",
       category: "Peonies",
       price: "Rs 4,200",
       image: "https://images.unsplash.com/photo-1527061011665-3652c757a4d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
       description: "Luxurious peonies symbolizing prosperity and good fortune."
-    }
+    },
+  
   ]
 };
 

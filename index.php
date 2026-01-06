@@ -10,6 +10,13 @@ include "db.php"; // Database connection
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
+    .tag {
+      background-color: #e1214b;
+      color: #fff;
+    }
+    .hero-inner {
+    gap: 220px;   /* text & image ke beech space */
+}
     /* Fixed Header */
     header {
         position: fixed;
@@ -24,7 +31,10 @@ include "db.php"; // Database connection
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 15px 30px;
+        width: 90%;          /* ya 85% for more space from edges */
+    max-width: 1500px;   /* optional, to limit very large screens */
+    margin: 0 auto;      /* center align horizontally */
+    padding: 15px 0;
     }
     .main-nav ul {
         display: flex;
@@ -142,7 +152,7 @@ include "db.php"; // Database connection
       z-index: 100; 
       padding-top: 60px; 
       left: 0;
-      top: 0;
+      top: 50px;
       width: 100%; 
       height: 100%; 
       overflow: auto; 
@@ -166,7 +176,19 @@ include "db.php"; // Database connection
       object-fit: cover;
       border-radius: 6px;
     }
-
+  footer {
+    background-color: #333;   /* dark background */
+    color: #fff;              /* main text color white */
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 60px;
+    font-family: 'Poppins', sans-serif;
+}
+footer p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #f7f6f6ff;             /* fully opaque white */
+}
     .modal-content .close {
       position: absolute;
       top: 10px;
@@ -203,8 +225,8 @@ include "db.php"; // Database connection
   <div class="container hero-inner">
     <div class="hero-text">
       <span class="tag">Fresh Flowers</span>
-      <h1>Beautiful Flowers for <span class="accent">Every Occasion</span></h1>
-      <p>Fresh and lovely flowers for gifting and decoration.</p>
+      <h1>Beautiful Flowers for <span class="accent"><br> Every Occasion</span></h1>
+      <p>Fresh and lovely flowers for gifting and decoration. We deliver <br>the freshest blooms right to your doorstep.</p>
     </div>
     <div class="hero-image">
       <img src="images/main.jpg" alt="Fresh Flowers">
@@ -216,6 +238,7 @@ include "db.php"; // Database connection
 <section class="featured">
   <div class="container">
     <h2>Featured Flowers</h2>
+    <p>Our most popular and beautiful flower arrangements</p>
     <div class="grid product-grid">
       <?php
       $featQuery = "SELECT * FROM flowers WHERE price >= 4500 ORDER BY id DESC";
@@ -242,6 +265,7 @@ include "db.php"; // Database connection
 <section id="categories">
   <div class="container">
     <h2>Shop by Category</h2>
+    <p>Find the perfect flowers for any occasion</p>
     <div class="grid categories-grid">
       <?php
       $catQuery = "SELECT * FROM flowers WHERE price < 4500 ORDER BY category";
@@ -302,6 +326,8 @@ include "db.php"; // Database connection
 
 <footer class="site-footer">
   <p>© 2025 BloomShop. All Rights Reserved.</p>
+     <p>Made with ❤️ for flower lovers everywhere</p>
+ 
 </footer>
 
 <script>
